@@ -5,7 +5,8 @@
 (function () {
     "use strict";
     var filePath;
-
+    var fileWriter;
+    var fileName = "log.txt";
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
@@ -14,7 +15,6 @@
         document.addEventListener('pause', onPause.bind(this), false);
         document.addEventListener('resume', onResume.bind(this), false);
         document.getElementById('readFile').addEventListener('click', readFile, false);
-        //document.getElementById('saveFile').addEventListener('click', saveFile, false);
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
     };
 
@@ -25,23 +25,18 @@
     function onResume() {
         // TODO: This application has been reactivated. Restore application state here.
     };
+
     function gotFS(fileSystem) {
-        fileSystem.root.getFile("readme4.txt", { create: true, exclusive: false }, gotFileEntry, fail);
+        fileSystem.root.getFile(fileName, { create: true, exclusive: false }, gotFileEntry, fail);
     };
+
     function gotFileEntry(fileEntry) {
         fileEntry.createWriter(gotFileWriter, fail);
         filePath = fileEntry;
     };
+
     function gotFileWriter(writer) {
-        writer.onwriteend = function (evt) {
-            readFile();
-        };
-        if (fileExist(writer)) {
-            writeDateToFile(writer);
-        }
-        else {
-            console.log("The file already exist");
-        }
+        writeDateToFile(writer);
     };
 
     function fail(error) {
@@ -49,19 +44,27 @@
     };
 
     function fileExist(writer) {
-        if (writer.length < 1) {
+            if (writer.length < 1) {
+                return false;
+            }
             return true;
-        }
-        return false;
+        
     };
+
     function writeDateToFile(writer) {
-        navigator.globalization.dateToString(
-            new Date(),
-            function (date) { writer.write(date.value) },
-            function () { },
-            { formatLength: 'short', selector: 'date' }
-        );
+        if (!fileExist(writer)) {
+            navigator.globalization.dateToString(
+                new Date(),
+                function (date) { writer.write(date.value) },
+                function () { },
+                { formatLength: 'short', selector: 'date and time' }
+            );
+        }
+        else {
+            console.log("File already exists");
+        }
     };
+
     function readFile() {
         filePath.file(
                   function (file) {
@@ -70,8 +73,14 @@
                       reader.readAsText(file);
                   },
                   function () {
-                      console.log("Det funkade inte!");
+                      console.log("Panic, cant read file!");
                   }
               );
     };
+
+    function writeToFile (){
+       /* fileWriter.onwriteend = function (evt) {
+        };
+        fileWriter.write("tjena!");*/
+    }
 } )();
