@@ -5,6 +5,7 @@
 (function () {
     "use strict";
     var filePath;
+
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
@@ -25,38 +26,52 @@
         // TODO: This application has been reactivated. Restore application state here.
     };
     function gotFS(fileSystem) {
-        fileSystem.root.getFile("readme.txt", { create: true, exclusive: false }, gotFileEntry, fail);
-    }
+        fileSystem.root.getFile("readme4.txt", { create: true, exclusive: false }, gotFileEntry, fail);
+    };
     function gotFileEntry(fileEntry) {
         fileEntry.createWriter(gotFileWriter, fail);
         filePath = fileEntry;
-    }
+    };
     function gotFileWriter(writer) {
         writer.onwriteend = function (evt) {
-            filePath.file(
-                function (file) {
-                    var reader = new FileReader();
-                    reader.onloadend = function(evt){ alert(evt.target.result);}; 
-                    reader.readAsText(file);
-                },
-                function () {
-                    console.log("Det funkade inte!");
-                }
-            );
+            readFile();
         };
-        writer.write("hejsanknasboll!");
-        /*navigator.globalization.dateToString(
-            new Date(),
-            function (date) { writer.write(date) },
-            function () {},
-            { formatLength: 'short', selector: 'date and time'}
-        );*/
-       
-    }
+        if (fileExist(writer)) {
+            writeDateToFile(writer);
+        }
+        else {
+            console.log("The file already exist");
+        }
+    };
+
     function fail(error) {
         console.log(error.code);
-    }
+    };
+
+    function fileExist(writer) {
+        if (writer.length < 1) {
+            return true;
+        }
+        return false;
+    };
+    function writeDateToFile(writer) {
+        navigator.globalization.dateToString(
+            new Date(),
+            function (date) { writer.write(date.value) },
+            function () { },
+            { formatLength: 'short', selector: 'date' }
+        );
+    };
     function readFile() {
-      
-    }
+        filePath.file(
+                  function (file) {
+                      var reader = new FileReader();
+                      reader.onloadend = function (evt) { alert(evt.target.result); };
+                      reader.readAsText(file);
+                  },
+                  function () {
+                      console.log("Det funkade inte!");
+                  }
+              );
+    };
 } )();
