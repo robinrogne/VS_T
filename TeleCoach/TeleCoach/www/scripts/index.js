@@ -4,15 +4,15 @@
 // and then run "window.location.reload()" in the JavaScript Console.
 (function () {
     "use strict";
-
+    var filePath;
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-        console.log(cordova.file);
         document.addEventListener('pause', onPause.bind(this), false);
-        document.addEventListener( 'resume', onResume.bind( this ), false );
+        document.addEventListener('resume', onResume.bind(this), false);
+        document.getElementById('readFile').addEventListener('click', readFile, false);
         //document.getElementById('saveFile').addEventListener('click', saveFile, false);
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
     };
@@ -29,23 +29,34 @@
     }
     function gotFileEntry(fileEntry) {
         fileEntry.createWriter(gotFileWriter, fail);
+        filePath = fileEntry;
     }
     function gotFileWriter(writer) {
         writer.onwriteend = function (evt) {
-            console.log("contents of file now 'some sample text'");
-            writer.truncate(11);
-            writer.onwriteend = function (evt) {
-                console.log("contents of file now 'some sample'");
-                writer.seek(4);
-                writer.write(" different text");
-                writer.onwriteend = function (evt) {
-                    console.log("contents of file now 'some different text'");
+            filePath.file(
+                function (file) {
+                    var reader = new FileReader();
+                    reader.onloadend = function(evt){ alert(evt.target.result);}; 
+                    reader.readAsText(file);
+                },
+                function () {
+                    console.log("Det funkade inte!");
                 }
-            };
+            );
         };
-        writer.write("some sample text");
+        writer.write("hejsanknasboll!");
+        /*navigator.globalization.dateToString(
+            new Date(),
+            function (date) { writer.write(date) },
+            function () {},
+            { formatLength: 'short', selector: 'date and time'}
+        );*/
+       
     }
     function fail(error) {
         console.log(error.code);
+    }
+    function readFile() {
+      
     }
 } )();
