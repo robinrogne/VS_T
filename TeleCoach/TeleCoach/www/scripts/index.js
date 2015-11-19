@@ -16,7 +16,7 @@ var dateFilePath;
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
         document.addEventListener('pause', onPause.bind(this), false);
         document.addEventListener('resume', onResume.bind(this), false);
-        //document.getElementById('readFileDate').addEventListener('click', readFileDate, false);
+       // document.getElementById('readFile').addEventListener('click', readFile, false);
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
     };
 

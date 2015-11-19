@@ -32,7 +32,7 @@ background-image: -moz-linear-gradient(top, #F62B2B, #D20202);
 background-image: -o-linear-gradient(top, #F62B2B, #D20202);
 background-image: linear-gradient(to bottom, #F62B2B, #D20202);
 filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#F62B2B, endColorstr=#D20202);
-width:96%;
+width:92%;
 margin-bottom: 3%;
 }
 
@@ -48,24 +48,36 @@ margin-bottom: 3%;
 }
 
 #centerContent{
-    margin-top:30%;
+    margin-top:5%;
+    text-align:center;
+    align-content:center;
 }
 #centerContentTrainingcard{
     margin-top:30%;
+    text-align:center;
+    align-content:center;
 }
 
 .header{
-    line-height:30px;
+    line-height:45px;
     width:100%;
-    height:30px;
+    height:45px;
     background-color:#ab0009;
     font-family: "Arial", sans-serif;
     color:white;
 }
+.img-head{
+    width:20px;
+    height:20px;
+    padding-left:6px;
+    vertical-align:middle;
+    margin-bottom:3px;
+}
 
 #logo{
-    margin-top:20%;
-    width:100%;
+    margin-top:40%;
+    width:96%;
+    margin-left: 2%;
 }
 
 div{
