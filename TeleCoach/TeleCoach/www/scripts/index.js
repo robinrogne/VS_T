@@ -7,7 +7,7 @@ var dateFilePath;
     "use strict";
     
     var fileWriter;
-    var fileName = "loghhhswwaaaaa2.txt";
+    var fileName = "loy.txt";
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
@@ -15,7 +15,7 @@ var dateFilePath;
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
         document.addEventListener('pause', onPause.bind(this), false);
         document.addEventListener('resume', onResume.bind(this), false);
-       // document.getElementById('readFile').addEventListener('click', readFile, false);
+        //document.getElementById('readFileDate').addEventListener('click', readFileDate, false);
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
     };
 
@@ -66,7 +66,7 @@ var dateFilePath;
         }
     };
 
-    function readFile() {
+    function readFileDate() {
         dateFilePath.file(
                   function (file) {
                       var reader = new FileReader();
