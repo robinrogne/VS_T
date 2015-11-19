@@ -98,3 +98,6 @@ function readFile() {
               }
           );
 }
+function doalert() {
+    return true;
+}
