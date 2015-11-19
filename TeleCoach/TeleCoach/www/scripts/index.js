@@ -2,19 +2,20 @@
 // http://go.microsoft.com/fwlink/?LinkID=397704
 // To debug code on page load in Ripple or on Android devices/emulators: launch your app, set breakpoints, 
 // and then run "window.location.reload()" in the JavaScript Console.
+var filePath;
 (function () {
     "use strict";
-    var filePath;
+   
     var fileWriter;
     var fileName = "loghhhs.txt";
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+        //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
         document.addEventListener('pause', onPause.bind(this), false);
         document.addEventListener('resume', onResume.bind(this), false);
-        document.getElementById('readFile').addEventListener('click', readFile, false);
+        //document.getElementById('readFile').addEventListener('click', readFile, false);
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
     };
 
@@ -84,3 +85,16 @@
         fileWriter.write("tjena!");*/
     }
 })();
+
+function readFile() {
+    filePath.file(
+              function (file) {
+                  var reader = new FileReader();
+                  reader.onloadend = function (evt) { alert(evt.target.result); };
+                  reader.readAsText(file);
+              },
+              function () {
+                  console.log("Panic, cant read file!");
+              }
+          );
+}
