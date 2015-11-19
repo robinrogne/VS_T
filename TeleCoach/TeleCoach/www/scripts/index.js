@@ -15,7 +15,7 @@ var dateFilePath;
         //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
         document.addEventListener('pause', onPause.bind(this), false);
         document.addEventListener('resume', onResume.bind(this), false);
-       // document.getElementById('readFile').addEventListener('click', readFile, false);
+        //document.getElementById('readFile').addEventListener('click', readFile, false);
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
     };
 
@@ -33,7 +33,7 @@ var dateFilePath;
 
     function gotFileEntry(fileEntry) {
         dateFilePath = fileEntry;
-        fileEntry.createWriter(gotFileWriter, fail); 
+        fileEntry.createWriter(gotFileWriter, fail);
     };
 
     function gotFileWriter(writer) {
