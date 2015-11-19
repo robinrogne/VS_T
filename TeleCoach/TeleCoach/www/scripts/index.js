@@ -2,17 +2,18 @@
 // http://go.microsoft.com/fwlink/?LinkID=397704
 // To debug code on page load in Ripple or on Android devices/emulators: launch your app, set breakpoints, 
 // and then run "window.location.reload()" in the JavaScript Console.
+
 var dateFilePath;
 (function () {
     "use strict";
     
     var fileWriter;
-    var fileName = "loy.txt";
+    var fileName = "loyyy.txt";
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
-        //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
         document.addEventListener('pause', onPause.bind(this), false);
         document.addEventListener('resume', onResume.bind(this), false);
         //document.getElementById('readFileDate').addEventListener('click', readFileDate, false);
@@ -32,8 +33,8 @@ var dateFilePath;
     };
 
     function gotFileEntry(fileEntry) {
+        fileEntry.createWriter(gotFileWriter, fail);
         dateFilePath = fileEntry;
-        fileEntry.createWriter(gotFileWriter, fail); 
     };
 
     function gotFileWriter(writer) {
@@ -58,7 +59,7 @@ var dateFilePath;
                 new Date(),
                 function (date) { writer.write(date.value) },
                 function () { },
-                { formatLength: 'short', selector: 'date' }
+                { formatLength: 'short', selector: 'date and time' }
             );
         }
         else {
@@ -86,7 +87,7 @@ var dateFilePath;
     }
 })();
 
-function readFileDate() {
+function readFileDate1() {
     dateFilePath.file(
               function (file) {
                   var reader = new FileReader();
@@ -106,4 +107,7 @@ function checkEarlierCards() {
 
 function goBack() {
     window.history.back();
+}
+function knas() {
+    alert("hejsan");
 }
