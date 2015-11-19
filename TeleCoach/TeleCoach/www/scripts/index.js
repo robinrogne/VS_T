@@ -107,10 +107,11 @@ function checkEarlierCards() {
 
 function trainingCardDone(card) {
     if (card === 1) {
-        cardArray.push(1);   
-    }
-    else {
         cardArray.push(1);
+        alert(cardArray);
+    }
+    else{
+        cardArray.push(7);
         cardArray.push(2);
         alert(cardArray);
     }
