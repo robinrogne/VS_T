@@ -3,10 +3,10 @@
 // To debug code on page load in Ripple or on Android devices/emulators: launch your app, set breakpoints, 
 // and then run "window.location.reload()" in the JavaScript Console.
 var filePath;
-var cardArray = new Array();
+var cardString;
 (function () {
     "use strict";
-   
+    
     var fileWriter;
     var fileName = "loghhhs.txt";
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
@@ -105,17 +105,6 @@ function checkEarlierCards() {
     return true;
 }
 
-function trainingCardDone(card) {
-    if (card === 1) {
-        cardArray.push(1);
-        alert(cardArray);
-    }
-    else{
-        cardArray.push(7);
-        cardArray.push(2);
-        alert(cardArray);
-    }
-}
 function goBack() {
     window.history.back();
 }
