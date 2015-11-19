@@ -6,7 +6,7 @@
     "use strict";
     var filePath;
     var fileWriter;
-    var fileName = "log.txt";
+    var fileName = "loghhhs.txt";
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
