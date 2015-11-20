@@ -1,12 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <link href="css/index.css" rel="stylesheet" />
 </head>
 <body>
     <script src="cordova.js"></script>
     <script src="scripts/platformOverrides.js"></script>
     <script src="scripts/index.js"></script>
+    <div class="header">
+        <div onclick="goBack()" style="width:55%;">
+            <img class="img-head" src="img/back-white.png" />
+            Medarbetarekort 1
+        </div>
+    </div>
     <button onclick="writeCard()">
         Färdig
     </button>
