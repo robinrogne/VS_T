@@ -33,8 +33,8 @@ var dateFilePath;
     };
 
     function gotFileEntry(fileEntry) {
-        fileEntry.createWriter(gotFileWriter, fail);
         dateFilePath = fileEntry;
+        fileEntry.createWriter(gotFileWriter, fail);
     };
 
     function gotFileWriter(writer) {
