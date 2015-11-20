@@ -11,7 +11,7 @@ border-top-color: #819BCB;
 border-right-color: #819BCB;
 border-bottom-color: #FF8585;
 border-left-color: #819BCB;
-border-width: 0px 0px 17px 0px;
+border-width: 0px 0px 7px 0px;
 border-style: solid; 
 -webkit-border-radius: 0px; 
 -moz-border-radius: 0px;
@@ -36,8 +36,17 @@ width:92%;
 margin-bottom: 3%;
 }
 
+.buttons:active{
+ border-top-color: #819BCB;border-right-color: #819BCB;border-bottom-color: #F53D68;border-left-color: #819BCB;border-width: 0px 0px 7px 0px;border-style: solid;
+ background-color: #E40A0A; background-image: -webkit-gradient(linear, left top, left bottom, from(#E40A0A), to(#9F0202));
+ background-image: -webkit-linear-gradient(top, #E40A0A, #9F0202);
+ background-image: -moz-linear-gradient(top, #E40A0A, #9F0202);
+ /*background-image: -ms-linear-gradient(top, #E40A0A, #9F0202);*/
+ background-image: -o-linear-gradient(top, #E40A0A, #9F0202);
+ background-image: linear-gradient(to bottom, #E40A0A, #9F0202);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#E40A0A, endColorstr=#9F0202);
+}
 .buttons:hover{
- border-top-color: #819BCB;border-right-color: #819BCB;border-bottom-color: #F53D68;border-left-color: #819BCB;border-width: 0px 0px 17px 0px;border-style: solid;
+ border-top-color: #819BCB;border-right-color: #819BCB;border-bottom-color: #F53D68;border-left-color: #819BCB;border-width: 0px 0px 7px 0px;border-style: solid;
  background-color: #E40A0A; background-image: -webkit-gradient(linear, left top, left bottom, from(#E40A0A), to(#9F0202));
  background-image: -webkit-linear-gradient(top, #E40A0A, #9F0202);
  background-image: -moz-linear-gradient(top, #E40A0A, #9F0202);
@@ -53,7 +62,7 @@ margin-bottom: 3%;
     align-content:center;
 }
 #centerContentTrainingcard{
-    margin-top:30%;
+    margin-top:3%;
     text-align:center;
     align-content:center;
 }
@@ -68,13 +77,24 @@ margin-bottom: 3%;
     font-family: "Arial", sans-serif;
     color:white;
 }
-.img-head{
-    width:20px;
-    height:20px;
-    padding-left:6px;
-    vertical-align:middle;
-    margin-bottom:3px;
-    margin-right:5%;
+.img-head {
+    width: 20px;
+    height: 20px;
+    padding-left: 6px;
+    vertical-align: middle;
+    margin-bottom: 3px;
+    margin-right: 5%;
+}
+
+.position-img{
+    width:20%;
+    float:left;
+    margin-left:3%;
+}
+
+#home-header{
+    margin-left:3%;
+
 }
 
 #logo{
@@ -83,6 +103,5 @@ margin-bottom: 3%;
     margin-left: 2%;
 }
 
-div{
 
-}
+
